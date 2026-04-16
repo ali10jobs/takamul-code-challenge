@@ -1,1 +1,4 @@
 Instructions/
+node_modules/
+.next/
+.Instructions/

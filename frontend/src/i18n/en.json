@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "blog": "Blog",
+    "ourTeam": "Our Team",
+    "contactUs": "Contact Us",
+    "bookAppointment": "Book Appointment",
+    "readMore": "Read More",
+    "back": "Back",
+    "search": "Search"
+  },
+  "hero": {
+    "title": "Lorem Ipsum",
+    "description": "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s."
+  },
+  "clients": {
+    "title": "What our clients are saying",
+    "intro": "Al Safar Legal Firm has earned a strong reputation for providing exceptional legal services. Our clients range from individuals to Fortune 500 companies. Our clients range from individuals to major international as well as Fortune 500."
+  },
+  "footer": {
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Email",
+    "contacts": "Contacts",
+    "copyright": "© 2024 . All rights reserved.",
+    "about": "About",
+    "ourStrategy": "Our Strategy",
+    "ourAdvantages": "Our Advantages",
+    "socialResponsibility": "Social Responsibility",
+    "ourServices": "Our Services",
+    "subscribeSuccess": "Successfully subscribed!",
+    "subscribeError": "Subscription failed. Please try again.",
+    "duplicateEmail": "This email is already subscribed.",
+    "invalidEmail": "Please enter a valid email address."
+  },
+  "search": {
+    "team": "Team",
+    "services": "Services",
+    "noResults": "No results found.",
+    "page": "Page"
+  },
+  "services": {
+    "legalConsultation": "Legal Consultation Services",
+    "generalConsultation": "General Legal Consultations",
+    "corporateConsultation": "Corporate Legal Consultations",
+    "individualConsultation": "Individual Legal Consultations"
+  }
+}

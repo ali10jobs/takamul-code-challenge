@@ -1,0 +1,13 @@
+import { configureStore } from "@reduxjs/toolkit";
+import uiReducer from "./uiSlice";
+import searchReducer from "./searchSlice";
+
+export const store = configureStore({
+  reducer: {
+    ui: uiReducer,
+    search: searchReducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
