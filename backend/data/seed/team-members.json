@@ -1,0 +1,68 @@
+[
+  {
+    "order": 1,
+    "name": "Khalid Al-Mansoori",
+    "nameAr": "خالد المنصوري",
+    "role": "Managing Partner",
+    "roleAr": "الشريك الإداري",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000001",
+    "email": "khalid@takamul.com",
+    "social": "#"
+  },
+  {
+    "order": 2,
+    "name": "Layla Haddad",
+    "nameAr": "ليلى حداد",
+    "role": "Senior Legal Counsel",
+    "roleAr": "مستشار قانوني أول",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000002",
+    "email": "layla@takamul.com",
+    "social": "#"
+  },
+  {
+    "order": 3,
+    "name": "Omar Al-Qahtani",
+    "nameAr": "عمر القحطاني",
+    "role": "Corporate Law Specialist",
+    "roleAr": "أخصائي قانون الشركات",
+    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000003",
+    "email": "omar@takamul.com",
+    "social": "#"
+  },
+  {
+    "order": 4,
+    "name": "Fatima Al-Saeed",
+    "nameAr": "فاطمة السعيد",
+    "role": "Litigation Director",
+    "roleAr": "مدير التقاضي",
+    "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000004",
+    "email": "fatima@takamul.com",
+    "social": "#"
+  },
+  {
+    "order": 5,
+    "name": "Yusuf Al-Rashid",
+    "nameAr": "يوسف الراشد",
+    "role": "Head of Arbitration",
+    "roleAr": "رئيس قسم التحكيم",
+    "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000005",
+    "email": "yusuf@takamul.com",
+    "social": "#"
+  },
+  {
+    "order": 6,
+    "name": "Noura Al-Dossari",
+    "nameAr": "نورة الدوسري",
+    "role": "Compliance Officer",
+    "roleAr": "مسؤول الامتثال",
+    "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    "phone": "+966500000006",
+    "email": "noura@takamul.com",
+    "social": "#"
+  }
+]

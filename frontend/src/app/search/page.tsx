@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import SearchPageClient from "./SearchPageClient";
+import SearchPageDynamic from "./SearchPageDynamic";
 
 function SearchLoading() {
   return (
@@ -12,7 +12,7 @@ function SearchLoading() {
 export default function SearchPage() {
   return (
     <Suspense fallback={<SearchLoading />}>
-      <SearchPageClient />
+      <SearchPageDynamic />
     </Suspense>
   );
 }

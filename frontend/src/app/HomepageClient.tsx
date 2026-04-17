@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import HeroSection from "@/components/organisms/HeroSection";
 import Carousel from "@/components/organisms/Carousel";
@@ -22,6 +23,7 @@ export default function HomepageClient({
   testimonials,
 }: HomepageClientProps) {
   const { t } = useTranslation();
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   return (
     <>
@@ -71,22 +73,33 @@ export default function HomepageClient({
           </p>
 
           <div className="flex flex-col md:flex-row gap-8 items-center">
-            {/* Client Image */}
+            {/* Client Image — syncs with the active testimonial via onIndexChange */}
             <div className="w-full md:w-1/3 flex-shrink-0">
-              <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-sm">
-                <Image
-                  src={testimonials[0]?.image || "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop"}
-                  alt="Client"
-                  fill
-                  className="object-cover img-dark-filter"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+              <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-sm bg-divider">
+                {testimonials.map((testimonial, idx) => (
+                  <Image
+                    key={testimonial.id ?? testimonial.image}
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className={`object-cover img-dark-filter transition-opacity duration-500 ${
+                      idx === activeTestimonial ? "opacity-100" : "opacity-0"
+                    }`}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={idx === 0}
+                  />
+                ))}
               </div>
             </div>
 
             {/* Testimonial Carousel */}
             <div className="w-full md:w-2/3">
-              <Carousel variant="dots" autoPlay autoPlayInterval={6000}>
+              <Carousel
+                variant="dots"
+                autoPlay
+                autoPlayInterval={6000}
+                onIndexChange={setActiveTestimonial}
+              >
                 {testimonials.map((testimonial) => (
                   <TestimonialCard
                     key={testimonial.id}

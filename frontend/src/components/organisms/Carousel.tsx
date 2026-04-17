@@ -14,6 +14,7 @@ interface CarouselProps {
   itemsPerView?: number;
   autoPlay?: boolean;
   autoPlayInterval?: number;
+  onIndexChange?: (index: number) => void;
 }
 
 export default function Carousel({
@@ -24,6 +25,7 @@ export default function Carousel({
   itemsPerView = 3,
   autoPlay = false,
   autoPlayInterval = 5000,
+  onIndexChange,
 }: CarouselProps) {
   const arrowColor = theme === "primary" ? "text-primary hover:text-accent" : "text-text-main hover:text-accent";
   const dotActiveColor = theme === "primary" ? "bg-primary" : "bg-accent";
@@ -44,6 +46,10 @@ export default function Carousel({
     const timer = setInterval(next, autoPlayInterval);
     return () => clearInterval(timer);
   }, [autoPlay, autoPlayInterval, next]);
+
+  useEffect(() => {
+    onIndexChange?.(current);
+  }, [current, onIndexChange]);
 
   if (variant === "dots") {
     return (

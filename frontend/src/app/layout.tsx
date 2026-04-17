@@ -35,7 +35,10 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${notoArabic.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body
+        className="min-h-full flex flex-col font-sans"
+        suppressHydrationWarning
+      >
         <StoreProvider>
           <I18nProvider>
             <RtlWrapper>

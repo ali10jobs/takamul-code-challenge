@@ -1,0 +1,35 @@
+[
+  {
+    "order": 1,
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=800&fit=crop",
+    "title": "Trusted Legal Partners Since 1999",
+    "titleAr": "شركاء قانونيون موثوقون منذ عام 1999",
+    "description": "We provide comprehensive legal solutions for individuals and corporations across Saudi Arabia. Our experienced team is committed to achieving the best outcomes for every client.",
+    "descriptionAr": "نقدم حلولاً قانونية شاملة للأفراد والشركات في جميع أنحاء المملكة العربية السعودية. فريقنا المتمرس ملتزم بتحقيق أفضل النتائج لكل عميل.",
+    "ctaUrl": "/services",
+    "ctaLabel": "Our Services",
+    "ctaLabelAr": "خدماتنا"
+  },
+  {
+    "order": 2,
+    "image": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=800&fit=crop",
+    "title": "Expert Corporate & Commercial Law",
+    "titleAr": "خبرة في قانون الشركات والتجارة",
+    "description": "From contract drafting to mergers and acquisitions, our corporate law specialists guide your business through every legal challenge with precision and care.",
+    "descriptionAr": "من صياغة العقود إلى عمليات الاندماج والاستحواذ، يرشد متخصصو قانون الشركات لدينا عملك خلال كل تحدٍ قانوني بدقة واهتمام.",
+    "ctaUrl": "/services/corporate-legal-consultation",
+    "ctaLabel": "Learn More",
+    "ctaLabelAr": "اعرف المزيد"
+  },
+  {
+    "order": 3,
+    "image": "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=1920&h=800&fit=crop",
+    "title": "Book Your Legal Consultation Today",
+    "titleAr": "احجز استشارتك القانونية اليوم",
+    "description": "Schedule a consultation with one of our senior attorneys and get the clarity you need. We serve clients across all major cities in the Kingdom.",
+    "descriptionAr": "حدد موعداً للتشاور مع أحد كبار محامينا واحصل على الوضوح الذي تحتاجه. نخدم العملاء في جميع المدن الرئيسية في المملكة.",
+    "ctaUrl": "#book",
+    "ctaLabel": "Book Appointment",
+    "ctaLabelAr": "احجز موعداً"
+  }
+]

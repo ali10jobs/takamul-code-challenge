@@ -54,6 +54,7 @@ async function fetchFromStrapi<T>(
     url.searchParams.set("pagination[page]", String(page));
     url.searchParams.set("pagination[pageSize]", String(pageSize));
     url.searchParams.set("populate", "*");
+    if (!url.searchParams.has("sort")) url.searchParams.set("sort", "order:asc");
 
     const res = await fetch(url.toString(), { next: { revalidate: 60 } });
     if (!res.ok) throw new Error(`Strapi error: ${res.status}`);
@@ -75,7 +76,7 @@ async function fetchFromStrapi<T>(
 // --- Public API ---
 
 export async function getHeroSlides(): Promise<HeroSlide[]> {
-  const strapi = await fetchFromStrapi<HeroSlide>("homepage");
+  const strapi = await fetchFromStrapi<HeroSlide>("hero-slides");
   if (strapi) return strapi.data;
   return heroSlides;
 }
@@ -131,8 +132,9 @@ export async function searchContent(
   const q = query.toLowerCase();
 
   if (tab === "team") {
+    const q = encodeURIComponent(query);
     const strapiResult = await fetchFromStrapi<TeamMember>(
-      `team-members?filters[$or][0][name][$containsi]=${query}&filters[$or][1][role][$containsi]=${query}`,
+      `team-members?filters[$or][0][name][$containsi]=${q}&filters[$or][1][role][$containsi]=${q}&filters[$or][2][nameAr][$containsi]=${q}&filters[$or][3][roleAr][$containsi]=${q}`,
       locale,
       page
     );
@@ -149,8 +151,9 @@ export async function searchContent(
   }
 
   // services tab
+  const sq = encodeURIComponent(query);
   const strapiResult = await fetchFromStrapi<Service>(
-    `services?filters[$or][0][title][$containsi]=${query}&filters[$or][1][description][$containsi]=${query}`,
+    `services?filters[$or][0][title][$containsi]=${sq}&filters[$or][1][description][$containsi]=${sq}&filters[$or][2][titleAr][$containsi]=${sq}&filters[$or][3][descriptionAr][$containsi]=${sq}`,
     locale,
     page
   );

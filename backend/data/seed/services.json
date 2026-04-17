@@ -1,0 +1,252 @@
+[
+  {
+    "order": 1,
+    "slug": "legal-consultation-services",
+    "title": "Legal Consultation Services",
+    "titleAr": "خدمات الاستشارات القانونية",
+    "description": "Law Firm is one of the leading legal offices that offer exceptional advisory services for both individuals and companies. Our mission is to provide comprehensive and specialized legal support to meet our clients' needs and offer the best legal solutions in various issues and legal fields. We provide our legal consultation services as follows:",
+    "descriptionAr": "مكتب المحاماة هو أحد المكاتب القانونية الرائدة التي تقدم خدمات استشارية استثنائية للأفراد والشركات. مهمتنا هي تقديم دعم قانوني شامل ومتخصص لتلبية احتياجات عملائنا وتقديم أفضل الحلول القانونية في مختلف القضايا والمجالات القانونية.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [
+      {
+        "heading": "General Legal Consultations",
+        "description": "At Law Firm, we provide comprehensive legal consultations covering all legal aspects that our clients may encounter in their daily lives or business activities. Our goal is to offer accurate legal advice based on a deep understanding of local and international laws.",
+        "items": []
+      },
+      {
+        "heading": "Corporate Legal Consultations",
+        "description": "We at the Law Firm understand the importance of legal consultations for companies in building and achieving their requirements.",
+        "items": [
+          "Establishing a and registering companies",
+          "All kinds of contracts and agreements",
+          "Commercial disputes",
+          "Compliance with local and international laws and regulations"
+        ]
+      },
+      {
+        "heading": "Individual Legal Consultations",
+        "description": "Law Firm offers customized advisory services for individuals, including:",
+        "items": [
+          "Family issues such as divorce, alimony, and custody",
+          "Real estate matters like buying, selling, and renting properties",
+          "Employment issues such as hiring and wrongful termination",
+          "Criminal cases and defending personal rights"
+        ]
+      }
+    ],
+    "contentAr": [
+      {
+        "heading": "الاستشارات القانونية العامة",
+        "description": "في مكتب المحاماة، نقدم استشارات قانونية شاملة تغطي جميع الجوانب القانونية التي قد يواجهها عملاؤنا في حياتهم اليومية أو أنشطتهم التجارية.",
+        "items": []
+      },
+      {
+        "heading": "الاستشارات القانونية للشركات",
+        "description": "نحن في مكتب المحاماة ندرك أهمية الاستشارات القانونية للشركات في بناء وتحقيق متطلباتها.",
+        "items": [
+          "تأسيس وتسجيل الشركات",
+          "جميع أنواع العقود والاتفاقيات",
+          "النزاعات التجارية",
+          "الامتثال للقوانين واللوائح المحلية والدولية"
+        ]
+      },
+      {
+        "heading": "الاستشارات القانونية الفردية",
+        "description": "يقدم مكتب المحاماة خدمات استشارية مخصصة للأفراد، تشمل:",
+        "items": [
+          "القضايا الأسرية مثل الطلاق والنفقة والحضانة",
+          "القضايا العقارية مثل البيع والشراء والإيجار",
+          "قضايا العمل مثل التوظيف والفصل التعسفي",
+          "القضايا الجنائية والدفاع عن الحقوق الشخصية"
+        ]
+      }
+    ]
+  },
+  {
+    "order": 2,
+    "slug": "defense-in-all-cases",
+    "title": "Defense in All Cases",
+    "titleAr": "الدفاع في جميع القضايا",
+    "description": "Our legal team provides defense services across all case types.",
+    "descriptionAr": "يقدم فريقنا القانوني خدمات الدفاع في جميع أنواع القضايا.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Defense Services", "items": ["Criminal defense", "Civil litigation", "Commercial disputes"] }],
+    "contentAr": [{ "heading": "خدمات الدفاع", "items": ["الدفاع الجنائي", "التقاضي المدني", "النزاعات التجارية"] }]
+  },
+  {
+    "order": 3,
+    "slug": "services-for-companies-and-institutions",
+    "title": "Services for Companies and Institutions",
+    "titleAr": "خدمات الشركات والمؤسسات",
+    "description": "Comprehensive legal services tailored for businesses and institutions.",
+    "descriptionAr": "خدمات قانونية شاملة مصممة للشركات والمؤسسات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Corporate Services", "items": ["Company formation", "Corporate governance", "Mergers & acquisitions"] }],
+    "contentAr": [{ "heading": "خدمات الشركات", "items": ["تأسيس الشركات", "حوكمة الشركات", "الاندماج والاستحواذ"] }]
+  },
+  {
+    "order": 4,
+    "slug": "establishing-national-and-foreign-companies",
+    "title": "Establishing National and Foreign Companies",
+    "titleAr": "تأسيس الشركات الوطنية والأجنبية",
+    "description": "Expert guidance for establishing companies locally and internationally.",
+    "descriptionAr": "إرشادات متخصصة لتأسيس الشركات محلياً ودولياً.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Company Establishment", "items": ["Local registration", "Foreign investment setup", "Joint ventures"] }],
+    "contentAr": [{ "heading": "تأسيس الشركات", "items": ["التسجيل المحلي", "إعداد الاستثمار الأجنبي", "المشاريع المشتركة"] }]
+  },
+  {
+    "order": 5,
+    "slug": "foreign-investment-services",
+    "title": "Foreign Investment Services",
+    "titleAr": "خدمات الاستثمار الأجنبي",
+    "description": "Specialized services for foreign investors entering the local market.",
+    "descriptionAr": "خدمات متخصصة للمستثمرين الأجانب الذين يدخلون السوق المحلي.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Investment Services", "items": ["Market entry strategy", "Regulatory compliance", "Investment licensing"] }],
+    "contentAr": [{ "heading": "خدمات الاستثمار", "items": ["استراتيجية دخول السوق", "الامتثال التنظيمي", "ترخيص الاستثمار"] }]
+  },
+  {
+    "order": 6,
+    "slug": "banks-and-financial-institutions",
+    "title": "Banks and Financial Institutions",
+    "titleAr": "البنوك والمؤسسات المالية",
+    "description": "Legal advisory for banking and financial sectors.",
+    "descriptionAr": "استشارات قانونية لقطاعي البنوك والمال.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Financial Services", "items": ["Banking regulations", "Financial compliance", "Loan agreements"] }],
+    "contentAr": [{ "heading": "الخدمات المالية", "items": ["اللوائح المصرفية", "الامتثال المالي", "اتفاقيات القروض"] }]
+  },
+  {
+    "order": 7,
+    "slug": "arbitration",
+    "title": "Arbitration",
+    "titleAr": "التحكيم",
+    "description": "Professional arbitration and dispute resolution services.",
+    "descriptionAr": "خدمات التحكيم وحل النزاعات المهنية.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Arbitration Services", "items": ["Commercial arbitration", "International arbitration", "Mediation"] }],
+    "contentAr": [{ "heading": "خدمات التحكيم", "items": ["التحكيم التجاري", "التحكيم الدولي", "الوساطة"] }]
+  },
+  {
+    "order": 8,
+    "slug": "commercial-agencies",
+    "title": "Commercial Agencies",
+    "titleAr": "الوكالات التجارية",
+    "description": "Legal support for commercial agency agreements and disputes.",
+    "descriptionAr": "دعم قانوني لاتفاقيات ونزاعات الوكالات التجارية.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Agency Services", "items": ["Agency registration", "Contract drafting", "Dispute resolution"] }],
+    "contentAr": [{ "heading": "خدمات الوكالة", "items": ["تسجيل الوكالة", "صياغة العقود", "حل النزاعات"] }]
+  },
+  {
+    "order": 9,
+    "slug": "contracts",
+    "title": "Contracts",
+    "titleAr": "العقود",
+    "description": "Drafting, reviewing, and managing all types of contracts.",
+    "descriptionAr": "صياغة ومراجعة وإدارة جميع أنواع العقود.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Contract Services", "items": ["Contract drafting", "Contract review", "Contract negotiation"] }],
+    "contentAr": [{ "heading": "خدمات العقود", "items": ["صياغة العقود", "مراجعة العقود", "التفاوض على العقود"] }]
+  },
+  {
+    "order": 10,
+    "slug": "corporate-governance-services",
+    "title": "Corporate Governance Services",
+    "titleAr": "خدمات حوكمة الشركات",
+    "description": "Ensuring best corporate governance practices.",
+    "descriptionAr": "ضمان أفضل ممارسات حوكمة الشركات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Governance Services", "items": ["Board advisory", "Compliance frameworks", "Risk management"] }],
+    "contentAr": [{ "heading": "خدمات الحوكمة", "items": ["استشارات مجلس الإدارة", "أطر الامتثال", "إدارة المخاطر"] }]
+  },
+  {
+    "order": 11,
+    "slug": "intellectual-property",
+    "title": "Intellectual Property",
+    "titleAr": "الملكية الفكرية",
+    "description": "Protection and management of intellectual property rights.",
+    "descriptionAr": "حماية وإدارة حقوق الملكية الفكرية.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "IP Services", "items": ["Trademark registration", "Patent filing", "Copyright protection"] }],
+    "contentAr": [{ "heading": "خدمات الملكية الفكرية", "items": ["تسجيل العلامات التجارية", "تقديم براءات الاختراع", "حماية حقوق النشر"] }]
+  },
+  {
+    "order": 12,
+    "slug": "supporting-vision-2030",
+    "title": "Supporting Vision 2030",
+    "titleAr": "دعم رؤية 2030",
+    "description": "Legal services aligned with Saudi Vision 2030 goals.",
+    "descriptionAr": "خدمات قانونية متوافقة مع أهداف رؤية المملكة 2030.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Vision 2030 Services", "items": ["Regulatory advisory", "Investment facilitation", "Sector transformation"] }],
+    "contentAr": [{ "heading": "خدمات رؤية 2030", "items": ["الاستشارات التنظيمية", "تسهيل الاستثمار", "تحول القطاعات"] }]
+  },
+  {
+    "order": 13,
+    "slug": "notarization",
+    "title": "Notarization",
+    "titleAr": "التوثيق",
+    "description": "Notarization and authentication of legal documents.",
+    "descriptionAr": "توثيق ومصادقة المستندات القانونية.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Notarization Services", "items": ["Document authentication", "Legal attestation", "Apostille services"] }],
+    "contentAr": [{ "heading": "خدمات التوثيق", "items": ["مصادقة المستندات", "التصديق القانوني", "خدمات الأبوستيل"] }]
+  },
+  {
+    "order": 14,
+    "slug": "companies-liquidation",
+    "title": "Companies Liquidation",
+    "titleAr": "تصفية الشركات",
+    "description": "Legal guidance through the company liquidation process.",
+    "descriptionAr": "إرشادات قانونية خلال عملية تصفية الشركات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Liquidation Services", "items": ["Voluntary liquidation", "Court-ordered liquidation", "Asset distribution"] }],
+    "contentAr": [{ "heading": "خدمات التصفية", "items": ["التصفية الاختيارية", "التصفية بأمر المحكمة", "توزيع الأصول"] }]
+  },
+  {
+    "order": 15,
+    "slug": "corporate-restructuring-and-reorganization",
+    "title": "Corporate Restructuring and Reorganization",
+    "titleAr": "إعادة هيكلة وتنظيم الشركات",
+    "description": "Strategic restructuring and corporate reorganization services.",
+    "descriptionAr": "خدمات إعادة الهيكلة الاستراتيجية وإعادة تنظيم الشركات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Restructuring Services", "items": ["Debt restructuring", "Organizational restructuring", "Mergers"] }],
+    "contentAr": [{ "heading": "خدمات إعادة الهيكلة", "items": ["إعادة هيكلة الديون", "إعادة الهيكلة التنظيمية", "الاندماج"] }]
+  },
+  {
+    "order": 16,
+    "slug": "estates",
+    "title": "Estates",
+    "titleAr": "التركات",
+    "description": "Estate planning and inheritance legal services.",
+    "descriptionAr": "خدمات قانونية للتخطيط العقاري والميراث.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Estate Services", "items": ["Estate planning", "Inheritance disputes", "Will drafting"] }],
+    "contentAr": [{ "heading": "خدمات التركات", "items": ["التخطيط العقاري", "نزاعات الميراث", "صياغة الوصايا"] }]
+  },
+  {
+    "order": 17,
+    "slug": "insurance",
+    "title": "Insurance",
+    "titleAr": "التأمين",
+    "description": "Legal services for insurance matters and claims.",
+    "descriptionAr": "خدمات قانونية لشؤون التأمين والمطالبات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Insurance Services", "items": ["Claims handling", "Policy review", "Litigation support"] }],
+    "contentAr": [{ "heading": "خدمات التأمين", "items": ["معالجة المطالبات", "مراجعة البوليصة", "دعم التقاضي"] }]
+  },
+  {
+    "order": 18,
+    "slug": "internal-regulations-for-companies",
+    "title": "Internal Regulations for Companies",
+    "titleAr": "اللوائح الداخلية للشركات",
+    "description": "Drafting and reviewing internal company regulations and policies.",
+    "descriptionAr": "صياغة ومراجعة اللوائح والسياسات الداخلية للشركات.",
+    "image": "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop",
+    "content": [{ "heading": "Regulatory Services", "items": ["Policy drafting", "Employee handbooks", "Compliance manuals"] }],
+    "contentAr": [{ "heading": "الخدمات التنظيمية", "items": ["صياغة السياسات", "أدلة الموظفين", "أدلة الامتثال"] }]
+  }
+]

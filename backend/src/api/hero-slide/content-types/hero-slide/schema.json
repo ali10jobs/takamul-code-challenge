@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hero_slides",
+  "info": {
+    "singularName": "hero-slide",
+    "pluralName": "hero-slides",
+    "displayName": "Hero Slide"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": { "type": "string", "required": true },
+    "title": { "type": "string", "required": true },
+    "titleAr": { "type": "string", "required": true },
+    "description": { "type": "text", "required": true },
+    "descriptionAr": { "type": "text", "required": true },
+    "ctaUrl": { "type": "string", "required": true },
+    "ctaLabel": { "type": "string", "required": true },
+    "ctaLabelAr": { "type": "string", "required": true },
+    "order": { "type": "integer", "required": true, "default": 0 }
+  }
+}

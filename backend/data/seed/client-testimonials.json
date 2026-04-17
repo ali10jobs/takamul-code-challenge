@@ -1,0 +1,32 @@
+[
+  {
+    "order": 1,
+    "name": "Abdullah Al-Harbi",
+    "nameAr": "عبدالله الحربي",
+    "role": "CFO, Gulf Industries Group",
+    "roleAr": "المدير المالي، مجموعة صناعات الخليج",
+    "quote": "\"Takamul's legal team guided us through a complex acquisition worth over 120 million riyals. Their strategic advice and meticulous contract review saved us from several costly pitfalls. I cannot recommend them highly enough.\"",
+    "quoteAr": "\"قاد فريق تكامل القانوني عملية استحواذ معقدة بقيمة تجاوزت 120 مليون ريال. أنقذتنا نصائحهم الاستراتيجية ومراجعتهم الدقيقة للعقود من عدة مخاطر مكلفة. لا أستطيع التوصية بهم بما يكفي.\"",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+  },
+  {
+    "order": 2,
+    "name": "Reem Al-Otaibi",
+    "nameAr": "ريم العتيبي",
+    "role": "Founder, Nahla Fintech",
+    "roleAr": "المؤسسة، نهلة فينتك",
+    "quote": "\"As a startup founder, I needed counsel that understood both tech regulations and investor terms. Takamul delivered on both fronts, helping us close our Series A ahead of schedule with clean, enforceable agreements.\"",
+    "quoteAr": "\"كمؤسسة لشركة ناشئة، احتجت إلى مستشار قانوني يفهم كلاً من تنظيمات التكنولوجيا وشروط المستثمرين. قدم تكامل على كلا الجبهتين، وساعدنا في إغلاق الجولة الاستثمارية (أ) قبل الموعد المحدد باتفاقيات واضحة وقابلة للتنفيذ.\"",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face"
+  },
+  {
+    "order": 3,
+    "name": "Faisal Al-Ghamdi",
+    "nameAr": "فيصل الغامدي",
+    "role": "General Manager, Reef Real Estate",
+    "roleAr": "المدير العام، ريف العقارية",
+    "quote": "\"We relied on Takamul for every stage of our commercial tower project — from land acquisition to tenant agreements. Their responsiveness and depth of expertise in Saudi property law is unmatched.\"",
+    "quoteAr": "\"اعتمدنا على تكامل في كل مرحلة من مشروع برجنا التجاري — من شراء الأرض إلى اتفاقيات المستأجرين. سرعة استجابتهم وعمق خبرتهم في قانون العقارات السعودي لا مثيل لها.\"",
+    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+  }
+]
