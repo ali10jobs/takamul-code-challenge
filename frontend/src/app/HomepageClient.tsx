@@ -42,7 +42,7 @@ export default function HomepageClient({
 
           {/* Desktop: Carousel with arrows */}
           <div className="hidden md:block">
-            <Carousel variant="arrows" itemsPerView={3}>
+            <Carousel variant="arrows" theme="primary" itemsPerView={3}>
               {team.map((member) => (
                 <TeamCard key={member.id} member={member} />
               ))}
@@ -51,7 +51,7 @@ export default function HomepageClient({
 
           {/* Mobile: Single item carousel */}
           <div className="md:hidden">
-            <Carousel variant="dots" itemsPerView={1}>
+            <Carousel variant="dots" theme="primary" itemsPerView={1}>
               {team.map((member) => (
                 <TeamCard key={member.id} member={member} />
               ))}

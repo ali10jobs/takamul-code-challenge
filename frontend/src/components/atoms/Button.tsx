@@ -2,7 +2,7 @@
 
 import React from "react";
 
-type ButtonVariant = "primary" | "outline" | "icon";
+type ButtonVariant = "primary" | "outline" | "solid-white" | "icon";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -15,7 +15,9 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-accent text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-accent-hover transition-colors",
   outline:
     "border border-white text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-white/10 transition-colors",
-  icon: "p-2 rounded-full text-white hover:bg-white/10 transition-colors flex items-center justify-center",
+  "solid-white":
+    "bg-white text-primary px-6 py-2.5 rounded text-sm font-bold hover:bg-white/90 transition-colors",
+  icon: "p-2 rounded-full transition-colors flex items-center justify-center",
 };
 
 export default function Button({

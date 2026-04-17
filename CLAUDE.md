@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A CMS-driven headless frontend code challenge for **Takamul Technologies**. Built with Next.js + Strapi.
+A CMS-driven headless monorepo for **Takamul Technologies**. `frontend/` is Next.js 16 (App Router), `backend/` is Strapi v5 on SQLite. Inline bilingual fields (EN/AR) per document; i18next for UI labels.
 
 **Scope — 3 pages only:**
 1. Homepage
@@ -13,20 +13,30 @@ A CMS-driven headless frontend code challenge for **Takamul Technologies**. Buil
 
 **Do NOT build**: Contact Us, About Us, or Blog pages — these are design placeholders. Show them as unlinked items in navigation.
 
-**Backend is optional**: Strapi CMS is preferred to demonstrate CMS familiarity, but you may use static/dummy data instead. Either way, multi-language support is mandatory.
-
 **RTK Query can be ignored** — not required for this task.
 
 ## Commands
 
 ```bash
-npm run dev          # Development
-npm run build        # Build
-npm run lint         # Lint
-npm test             # Run all tests
-npx jest <file>      # Run a single test
-npx jest --watch     # Watch mode
+# Frontend (Next.js) — from frontend/
+cd frontend && npm run dev          # Development
+cd frontend && npm run build        # Build
+cd frontend && npm run lint         # Lint
+cd frontend && npm test             # Run all tests
+cd frontend && npx jest <file>      # Run a single test
+cd frontend && npx jest --watch     # Watch mode
 ```
+
+```bash
+# Backend (Strapi) — from repo root
+cd backend && npm run develop   # Dev server at http://localhost:1337/admin
+cd backend && npm run build     # Build admin panel
+cd backend && npm run start     # Production mode
+```
+
+### Local Development
+
+Run backend first (`:1337`), then frontend (`:3000`) in a second terminal. Frontend reads `NEXT_PUBLIC_STRAPI_URL` — if unset, renders from `src/data/*.ts` fallback.
 
 ## Tech Stack
 
@@ -37,7 +47,7 @@ npx jest --watch     # Watch mode
 | State | Redux Toolkit (search query, language selection, form states) |
 | Forms | Formik — required for Footer subscription, optional for Header search input |
 | i18n | `i18next` or `next-intl` — EN + AR with full RTL support for Arabic |
-| CMS/API | Strapi |
+| CMS/API | Strapi v5 (SQLite dev, inline bilingual fields) |
 | Testing | Jest + React Testing Library |
 
 ## Tailwind Theme
@@ -136,6 +146,8 @@ All Strapi calls go through a single configured client (`lib/strapi.ts`) that au
 
 Implement proper error handling for all API requests. Show loading states (skeleton loaders or spinners) during client-side data fetches.
 
+`lib/strapi.ts` auto-falls back to `src/data/*.ts` when `NEXT_PUBLIC_STRAPI_URL` is unset — useful for offline dev and as a regression guard. Strapi v5 returns flat documents (no `attributes` wrapper), so the typed cast in `fetchFromStrapi` works without a mapping layer. All list fetches use `sort=order:asc` to preserve curation. Search filters include both EN and AR fields via Strapi's `$or` operator.
+
 ### Design System (Tailwind — Atomic Design)
 
 Reusable components extracted from repeated patterns across the design images, organized in three layers:
@@ -184,27 +196,22 @@ Three focused test areas using Jest + React Testing Library:
 
 ## Strapi Collections
 
-| Collection | Key Fields |
-|---|---|
-| Global/Navigation | multilingual nav links, services dropdown list |
-| Homepage (Single Type) | hero media (images/videos), slider content, CTA URL (configurable — not hardcoded) |
-| Services (Collection) | title, slug, description, rich text content blocks |
-| Team Members (Collection) | image, name, role |
-| Clients/Testimonials (Collection) | logo/image, testimonial quote, name, role/company |
-| Subscribers (Collection) | email (validate uniqueness server-side) |
-| Pages & Blog | schemas only — no frontend pages built for these |
+| Collection / Component | Key Fields | Notes |
+|---|---|---|
+| `hero-slide` | image (URL), title/titleAr, description/descriptionAr, ctaUrl, ctaLabel/ctaLabelAr, order | CTA URL is CMS-configurable (FAQ #7) |
+| `service` | slug (uid), title/titleAr, description/descriptionAr, image, content/contentAr (repeatable `shared.service-section`), order | Dynamic route by slug |
+| `shared.service-section` | heading, description (optional), items (JSON string array) | Nested component |
+| `team-member` | name/nameAr, role/roleAr, image, phone, email, social, order | |
+| `client-testimonial` | name/nameAr, role/roleAr, quote/quoteAr, image, order | |
+| `subscriber` | email (unique, required) | Public `create` only; no `find` (PII) |
 
-## Execution Steps
+Navigation links and footer link labels live in `frontend/src/i18n/*.json`, not in Strapi — they're UI strings, not editorial content.
 
-1. Initialize Next.js project with Tailwind CSS, Redux Toolkit, and i18n setup
-2. Configure Tailwind theme (palette above) and RTL directional support
-3. Set up Strapi with all collections above (or create dummy data files)
-4. Build `lib/strapi.ts` client with auto locale/pagination injection
-5. Build the Design System atoms → molecules → organisms
-6. Build Global Layout (Header with mega-menu, Footer with Formik subscription)
-7. Implement Homepage (Hero with slider, Our Team carousel, Clients carousel)
-8. Implement Service Detail Page (dynamic route, rich text rendering)
-9. Implement Search Page (tabs, results, API-driven pagination)
-10. Add i18n translations for AR/EN and verify full RTL support
-11. Responsive pass — entire website must work across mobile, tablet, and desktop
-12. Set up Jest + RTL and write the 3 required tests
+## Current Status
+
+- Frontend scaffolded with Next.js 16 (App Router), Tailwind CSS, Redux Toolkit, and i18next (EN/AR with RTL).
+- Design System (atoms → molecules → organisms) built per the Atomic Design section above.
+- Global Header (with mega-menu, search, language toggle) and Footer (with Formik subscription) in place.
+- Homepage, Service Detail, and Search Page implemented against `lib/strapi.ts` with fallback to `src/data/*.ts`.
+- i18n translations, RTL support, responsive pass, and the 3 Jest + RTL test suites are in place.
+- Strapi v5 backend (`backend/`) being integrated: content types, seed bootstrap, public permissions, and env wiring per the plan at `.claude/plans/now-make-a-plan-precious-peacock.md`.

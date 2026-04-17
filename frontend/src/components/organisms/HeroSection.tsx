@@ -31,7 +31,7 @@ export default function HeroSection({ slides }: HeroSectionProps) {
   const ctaLabel = locale === "ar" ? slide.ctaLabelAr : slide.ctaLabel;
 
   return (
-    <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden">
+    <section className="relative w-full h-[600px] md:h-[800px] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -54,7 +54,7 @@ export default function HeroSection({ slides }: HeroSectionProps) {
           {description}
         </p>
         <div>
-          <Button variant="outline" href={slide.ctaUrl}>
+          <Button variant="solid-white" href={slide.ctaUrl}>
             {ctaLabel}
           </Button>
         </div>

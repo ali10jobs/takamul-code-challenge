@@ -4,10 +4,13 @@ import { useState, useCallback, useEffect } from "react";
 import Button from "@/components/atoms/Button";
 
 type CarouselVariant = "arrows" | "dots";
+type CarouselTheme = "primary" | "accent";
 
 interface CarouselProps {
   children: React.ReactNode[];
   variant?: CarouselVariant;
+  theme?: CarouselTheme;
+  // fixedLtr?: boolean;
   itemsPerView?: number;
   autoPlay?: boolean;
   autoPlayInterval?: number;
@@ -16,10 +19,14 @@ interface CarouselProps {
 export default function Carousel({
   children,
   variant = "arrows",
+  theme = "accent",
+  // fixedLtr = false,
   itemsPerView = 3,
   autoPlay = false,
   autoPlayInterval = 5000,
 }: CarouselProps) {
+  const arrowColor = theme === "primary" ? "text-primary hover:text-accent" : "text-text-main hover:text-accent";
+  const dotActiveColor = theme === "primary" ? "bg-primary" : "bg-accent";
   const [current, setCurrent] = useState(0);
   const total = children.length;
   const maxIndex = variant === "dots" ? total - 1 : Math.max(0, total - itemsPerView);
@@ -40,7 +47,7 @@ export default function Carousel({
 
   if (variant === "dots") {
     return (
-      <div className="relative">
+      <div className="relative" dir="ltr">
         <div className="overflow-hidden">
           <div
             className="transition-transform duration-500 ease-in-out"
@@ -63,7 +70,7 @@ export default function Carousel({
               onClick={() => setCurrent(idx)}
               className={`w-3 h-3 rounded-full transition-all ${
                 idx === current
-                  ? "bg-accent"
+                  ? dotActiveColor
                   : "bg-divider hover:bg-muted"
               }`}
               aria-label={`Testimonial ${idx + 1}`}
@@ -76,13 +83,13 @@ export default function Carousel({
 
   // Arrows variant
   return (
-    <div className="relative">
+    <div className="relative" dir="ltr">
       <div className="flex items-center">
         {/* Left Arrow */}
         <Button
           variant="icon"
           onClick={prev}
-          className="text-text-main hover:text-accent flex-shrink-0 -ml-2 md:-ml-6"
+          className={`${arrowColor} flex-shrink-0 -ml-2 md:-ml-6`}
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -113,7 +120,7 @@ export default function Carousel({
         <Button
           variant="icon"
           onClick={next}
-          className="text-text-main hover:text-accent flex-shrink-0 -mr-2 md:-mr-6"
+          className={`${arrowColor} flex-shrink-0 -mr-2 md:-mr-6`}
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

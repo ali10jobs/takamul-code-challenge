@@ -28,9 +28,9 @@ export default function TeamCard({ member }: TeamCardProps) {
       <h3 className="text-lg font-semibold text-text-main">{name}</h3>
       <p className="text-sm text-muted mb-3">{role}</p>
       <div className="flex items-center gap-3">
-        <SocialIcon type="phone" href={`tel:${member.phone}`} size="sm" className="text-text-main hover:text-accent" />
-        <SocialIcon type="email" href={`mailto:${member.email}`} size="sm" className="text-text-main hover:text-accent" />
-        <SocialIcon type="social" href={member.social} size="sm" className="text-text-main hover:text-accent" />
+        <SocialIcon type="phone" href={`tel:${member.phone}`} size="sm" className="text-primary hover:text-accent" />
+        <SocialIcon type="email" href={`mailto:${member.email}`} size="sm" className="text-primary hover:text-accent" />
+        <SocialIcon type="social" href={member.social} size="sm" className="text-primary hover:text-accent" />
       </div>
     </div>
   );

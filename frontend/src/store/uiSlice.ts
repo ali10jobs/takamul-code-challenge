@@ -23,10 +23,12 @@ const uiSlice = createSlice({
     setLocale(state, action: PayloadAction<Locale>) {
       state.locale = action.payload;
       state.isRTL = action.payload === "ar";
+      if (typeof window !== "undefined") localStorage.setItem("locale", action.payload);
     },
     toggleLocale(state) {
       state.locale = state.locale === "en" ? "ar" : "en";
       state.isRTL = state.locale === "ar";
+      if (typeof window !== "undefined") localStorage.setItem("locale", state.locale);
     },
     setServicesDropdownOpen(state, action: PayloadAction<boolean>) {
       state.isServicesDropdownOpen = action.payload;

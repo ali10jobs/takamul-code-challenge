@@ -52,7 +52,7 @@ const sizeClasses: Record<"sm" | "md", string> = {
 export default function SocialIcon({
   type,
   href = "#",
-  className = "",
+  className = "text-white hover:text-accent-hover",
   size = "md",
 }: SocialIconProps) {
   return (
@@ -60,7 +60,7 @@ export default function SocialIcon({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center text-white hover:text-accent-hover transition-colors ${className}`}
+      className={`inline-flex items-center justify-center transition-colors ${className}`}
     >
       <span className={sizeClasses[size]}>{icons[type]}</span>
     </a>

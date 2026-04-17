@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -11,6 +12,7 @@ import { navLinks } from "@/data/navigation";
 import { services } from "@/data/services";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
+import DropdownMenu from "@/components/layout/DropdownMenu";
 
 export default function Header() {
   const { t } = useTranslation();
@@ -18,8 +20,19 @@ export default function Header() {
   const router = useRouter();
   const { locale, isSearchOpen } = useAppSelector((s) => s.ui);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [searchValue, setSearchValue] = useState("");
+
+  const openServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setIsServicesOpen(true);
+  };
+
+  const scheduleCloseServices = () => {
+    closeTimer.current = setTimeout(() => setIsServicesOpen(false), 120);
+  };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,10 +50,10 @@ export default function Header() {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
-      <nav className="flex items-center justify-between px-6 md:px-12 lg:px-16 py-4">
+      <nav className={`flex items-center justify-between px-6 md:px-12 lg:px-16 py-4 ${isServicesOpen || mobileMenuOpen ? "bg-primary" : "bg-transparent"}`}>
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
-          <span className="text-white text-xl font-bold tracking-wide">TAKAMUL</span>
+          <Image src="/Logo.png" alt="Logo" width={90} height={65} className="h-auto w-auto" />
         </Link>
 
         {/* Desktop Nav Links */}
@@ -49,8 +62,8 @@ export default function Header() {
             <div
               key={link.key}
               className="relative"
-              onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
-              onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
+              onMouseEnter={() => link.hasDropdown && openServices()}
+              onMouseLeave={() => link.hasDropdown && scheduleCloseServices()}
             >
               {link.href ? (
                 <Link
@@ -68,7 +81,7 @@ export default function Header() {
                   {t(`nav.${link.key}`)}
                   {link.hasDropdown && (
                     <svg
-                      className="w-3 h-3 inline-block ml-1"
+                      className={`w-3 h-3 inline-block ml-1 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -138,35 +151,12 @@ export default function Header() {
 
       {/* Mega Menu Dropdown */}
       {isServicesOpen && (
-        <div
-          className="absolute left-0 right-0 bg-primary z-40 hidden lg:block"
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
-        >
-          <div className="px-12 lg:px-16 py-8">
-            <div className="grid grid-cols-4 gap-x-8 gap-y-3">
-              {services.map((service) => (
-                <Link
-                  key={service.id}
-                  href={`/services/${service.slug}`}
-                  className="text-white/80 text-sm hover:text-white transition-colors"
-                >
-                  {locale === "ar" ? service.titleAr : service.title}
-                </Link>
-              ))}
-            </div>
-            <div className="mt-8 flex items-end justify-between">
-              <Button variant="outline" href="/services/legal-consultation-services">
-                {t("nav.readMore")}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <DropdownMenu onMouseEnter={openServices} onMouseLeave={scheduleCloseServices} />
       )}
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-primary px-6 py-4">
+        <div className="lg:hidden bg-primary px-6 py-6">
           {navLinks.map((link) => (
             <div key={link.key} className="py-2">
               {link.href ? (
@@ -177,6 +167,35 @@ export default function Header() {
                 >
                   {t(`nav.${link.key}`)}
                 </Link>
+              ) : link.hasDropdown ? (
+                <>
+                  <button
+                    className="flex items-center gap-1 text-white text-sm w-full text-start"
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                  >
+                    {t(`nav.${link.key}`)}
+                    <svg
+                      className={`w-3 h-3 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileServicesOpen && (
+                    <div className="mt-2 pl-4 border-l border-white/20">
+                      {services.map((service) => (
+                        <Link
+                          key={service.id}
+                          href={`/services/${service.slug}`}
+                          className="text-white/70 text-xs block py-1.5"
+                          onClick={() => { setMobileMenuOpen(false); setMobileServicesOpen(false); }}
+                        >
+                          {locale === "ar" ? service.titleAr : service.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </>
               ) : (
                 <span className="text-white/70 text-sm block">
                   {t(`nav.${link.key}`)}
@@ -184,19 +203,6 @@ export default function Header() {
               )}
             </div>
           ))}
-          {/* Mobile Services Sub-links */}
-          <div className="py-2 pl-4 border-l border-white/20">
-            {services.slice(0, 6).map((service) => (
-              <Link
-                key={service.id}
-                href={`/services/${service.slug}`}
-                className="text-white/60 text-xs block py-1"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {locale === "ar" ? service.titleAr : service.title}
-              </Link>
-            ))}
-          </div>
           <div className="pt-3">
             <Button variant="outline" className="text-xs w-full text-center">
               {t("nav.bookAppointment")}
