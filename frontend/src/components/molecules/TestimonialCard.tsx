@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppSelector } from "@/store/hooks";
+import { useIsHydrated } from "@/lib/useIsHydrated";
 import type { ClientTestimonial } from "@/data/clients";
 
 interface TestimonialCardProps {
@@ -8,7 +9,9 @@ interface TestimonialCardProps {
 }
 
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
-  const locale = useAppSelector((s) => s.ui.locale);
+  const storeLocale = useAppSelector((s) => s.ui.locale);
+  const hydrated = useIsHydrated();
+  const locale = hydrated ? storeLocale : "en";
   const name = locale === "ar" ? testimonial.nameAr : testimonial.name;
   const role = locale === "ar" ? testimonial.roleAr : testimonial.role;
   const quote = locale === "ar" ? testimonial.quoteAr : testimonial.quote;

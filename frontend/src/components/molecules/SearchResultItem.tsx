@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Divider from "@/components/atoms/Divider";
-import { useTranslation } from "react-i18next";
+import { useT } from "@/lib/useIsHydrated";
 
 interface SearchResultItemProps {
   title: string;
@@ -10,7 +10,7 @@ interface SearchResultItemProps {
 }
 
 export default function SearchResultItem({ title, href }: SearchResultItemProps) {
-  const { t } = useTranslation();
+  const t = useT();
 
   return (
     <div>

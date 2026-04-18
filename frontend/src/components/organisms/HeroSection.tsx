@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import { useAppSelector } from "@/store/hooks";
+import { useIsHydrated } from "@/lib/useIsHydrated";
 import type { HeroSlide } from "@/data/hero";
 
 interface HeroSectionProps {
@@ -13,7 +14,9 @@ interface HeroSectionProps {
 export default function HeroSection({ slides }: HeroSectionProps) {
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState<Set<string>>(new Set());
-  const locale = useAppSelector((s) => s.ui.locale);
+  const storeLocale = useAppSelector((s) => s.ui.locale);
+  const hydrated = useIsHydrated();
+  const locale = hydrated ? storeLocale : "en";
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -30,7 +33,7 @@ export default function HeroSection({ slides }: HeroSectionProps) {
   const title = locale === "ar" ? slide.titleAr : slide.title;
   const description = locale === "ar" ? slide.descriptionAr : slide.description;
   const ctaLabel = locale === "ar" ? slide.ctaLabelAr : slide.ctaLabel;
-  const isCurrentLoaded = loaded.has(slide.image);
+  const isCurrentLoaded = loaded.has(slide.videoUrl ?? slide.image);
 
   const markLoaded = (src: string) =>
     setLoaded((prev) => {
@@ -50,34 +53,50 @@ export default function HeroSection({ slides }: HeroSectionProps) {
         }`}
       />
 
-      {/* Render all slide images stacked; only the current one is visible.
-          This keeps already-loaded images in memory so slide transitions are instant. */}
-      {slides.map((s, idx) => (
-        <div
-          key={s.id ?? s.image}
-          className={`absolute inset-0 transition-opacity duration-700 ${
-            idx === current ? "opacity-100" : "opacity-0"
-          }`}
-          aria-hidden={idx !== current}
-        >
-          <Image
-            src={s.image}
-            alt={locale === "ar" ? s.titleAr : s.title}
-            fill
-            className="object-cover img-dark-filter"
-            priority={idx === 0}
-            sizes="100vw"
-            onLoad={() => markLoaded(s.image)}
-          />
-          <div className="absolute inset-0 bg-primary/60" />
-        </div>
-      ))}
+      {/* Render all slide media stacked; only the current one is visible.
+          This keeps already-loaded images/videos in memory so slide transitions are instant. */}
+      {slides.map((s, idx) => {
+        const mediaKey = s.videoUrl ?? s.image;
+        return (
+          <div
+            key={s.id ?? mediaKey}
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              idx === current ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden={idx !== current}
+          >
+            {s.videoUrl ? (
+              <video
+                src={s.videoUrl}
+                poster={s.image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover img-dark-filter"
+                onLoadedData={() => markLoaded(mediaKey)}
+                aria-label={locale === "ar" ? s.titleAr : s.title}
+              />
+            ) : (
+              <Image
+                src={s.image}
+                alt={locale === "ar" ? s.titleAr : s.title}
+                fill
+                className="object-cover img-dark-filter"
+                priority={idx === 0}
+                sizes="100vw"
+                onLoad={() => markLoaded(mediaKey)}
+              />
+            )}
+            <div className="absolute inset-0 bg-primary/60" />
+          </div>
+        );
+      })}
 
       {/* Content */}
       <div
-        className={`relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-4xl transition-opacity duration-500 ${
-          isCurrentLoaded ? "opacity-100" : "opacity-0"
-        }`}
+        className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-4xl"
       >
         <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
           {title}

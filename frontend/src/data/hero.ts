@@ -1,6 +1,7 @@
 export interface HeroSlide {
   id: number;
   image: string;
+  videoUrl?: string;
   title: string;
   titleAr: string;
   description: string;
@@ -14,6 +15,8 @@ export const heroSlides: HeroSlide[] = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=800&fit=crop",
+    videoUrl:
+      "https://videos.pexels.com/video-files/3195531/3195531-uhd_3840_2160_25fps.mp4",
     title: "Lorem Ipsum",
     titleAr: "لوريم إيبسوم",
     description:

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useIsHydrated, useT } from "@/lib/useIsHydrated";
 import {
   setQuery,
   setActiveTab,
@@ -16,16 +16,19 @@ import { searchContent } from "@/lib/strapi";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import SearchResultItem from "@/components/molecules/SearchResultItem";
+import SearchResultSkeleton from "@/components/skeletons/SearchResultSkeleton";
 import PaginationBar from "@/components/molecules/PaginationBar";
 import type { TeamMember } from "@/data/team";
 import type { Service } from "@/data/services";
 
 export default function SearchPageClient() {
-  const { t } = useTranslation();
+  const t = useT();
   const dispatch = useAppDispatch();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { locale } = useAppSelector((s) => s.ui);
+  const { locale: storeLocale } = useAppSelector((s) => s.ui);
+  const hydrated = useIsHydrated();
+  const locale = hydrated ? storeLocale : "en";
   const { query, activeTab, currentPage, totalPages } = useAppSelector(
     (s) => s.search
   );
@@ -34,6 +37,7 @@ export default function SearchPageClient() {
   const [results, setResults] = useState<(TeamMember | Service)[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState(urlQuery);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   // Sync URL query param to Redux store
   const activeQuery = urlQuery || query;
@@ -102,14 +106,23 @@ export default function SearchPageClient() {
   return (
     <>
       {/* Hero with Search Bar */}
-      <div className="relative w-full h-[300px] md:h-[400px]">
+      <div className="relative w-full h-[300px] md:h-[400px] bg-primary">
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 animate-pulse bg-gradient-to-br from-primary/80 via-primary/60 to-primary/80 transition-opacity duration-300 ${
+            heroLoaded ? "opacity-0" : "opacity-100"
+          }`}
+        />
         <Image
           src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1920&h=600&fit=crop"
           alt="Search"
           fill
-          className="object-cover img-dark-filter"
+          className={`object-cover img-dark-filter transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
           priority
           sizes="100vw"
+          onLoad={() => setHeroLoaded(true)}
         />
         <div className="absolute inset-0 bg-primary/60" />
 
@@ -193,13 +206,9 @@ export default function SearchPageClient() {
           {/* Right Panel — Results */}
           <div className="flex-1 min-w-0">
             {loading ? (
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="animate-pulse">
-                    <div className="h-4 bg-divider rounded w-3/4 mb-2" />
-                    <div className="h-3 bg-divider rounded w-1/4 mb-4" />
-                    <hr className="border-divider" />
-                  </div>
+              <div>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <SearchResultSkeleton key={i} />
                 ))}
               </div>
             ) : results.length > 0 ? (

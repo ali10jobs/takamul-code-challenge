@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
+import { useT } from "@/lib/useIsHydrated";
 import { useAppSelector } from "@/store/hooks";
+import { useIsHydrated } from "@/lib/useIsHydrated";
 import type { Service } from "@/data/services";
 
 interface ServiceDetailClientProps {
@@ -13,9 +15,12 @@ interface ServiceDetailClientProps {
 export default function ServiceDetailClient({
   service,
 }: ServiceDetailClientProps) {
-  const { t } = useTranslation();
+  const t = useT();
   const router = useRouter();
-  const locale = useAppSelector((s) => s.ui.locale);
+  const storeLocale = useAppSelector((s) => s.ui.locale);
+  const hydrated = useIsHydrated();
+  const locale = hydrated ? storeLocale : "en";
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   const title = locale === "ar" ? service.titleAr : service.title;
   const description =
@@ -25,14 +30,23 @@ export default function ServiceDetailClient({
   return (
     <>
       {/* Hero Image */}
-      <div className="relative w-full h-[300px] md:h-[400px]">
+      <div className="relative w-full h-[300px] md:h-[400px] bg-primary">
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 animate-pulse bg-gradient-to-br from-primary/80 via-primary/60 to-primary/80 transition-opacity duration-300 ${
+            heroLoaded ? "opacity-0" : "opacity-100"
+          }`}
+        />
         <Image
           src={service.image}
           alt={title}
           fill
-          className="object-cover img-dark-filter"
+          className={`object-cover img-dark-filter transition-opacity duration-500 ${
+            heroLoaded ? "opacity-100" : "opacity-0"
+          }`}
           priority
           sizes="100vw"
+          onLoad={() => setHeroLoaded(true)}
         />
         <div className="absolute inset-0 bg-primary/50" />
       </div>

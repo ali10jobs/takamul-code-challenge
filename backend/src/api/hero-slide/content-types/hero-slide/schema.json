@@ -12,6 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "image": { "type": "string", "required": true },
+    "videoUrl": { "type": "string" },
     "title": { "type": "string", "required": true },
     "titleAr": { "type": "string", "required": true },
     "description": { "type": "text", "required": true },

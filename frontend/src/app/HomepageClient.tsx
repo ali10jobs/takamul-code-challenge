@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useT } from "@/lib/useIsHydrated";
 import HeroSection from "@/components/organisms/HeroSection";
 import Carousel from "@/components/organisms/Carousel";
 import TeamCard from "@/components/molecules/TeamCard";
@@ -22,8 +22,22 @@ export default function HomepageClient({
   team,
   testimonials,
 }: HomepageClientProps) {
-  const { t } = useTranslation();
+  const t = useT();
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [loadedTestimonials, setLoadedTestimonials] = useState<Set<string>>(
+    new Set()
+  );
+  const markTestimonialLoaded = (src: string) =>
+    setLoadedTestimonials((prev) => {
+      if (prev.has(src)) return prev;
+      const next = new Set(prev);
+      next.add(src);
+      return next;
+    });
+  const activeTestimonialSrc = testimonials[activeTestimonial]?.image;
+  const activeTestimonialLoaded = activeTestimonialSrc
+    ? loadedTestimonials.has(activeTestimonialSrc)
+    : true;
 
   return (
     <>
@@ -75,7 +89,13 @@ export default function HomepageClient({
           <div className="flex flex-col md:flex-row gap-8 items-center">
             {/* Client Image — syncs with the active testimonial via onIndexChange */}
             <div className="w-full md:w-1/3 flex-shrink-0">
-              <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-sm bg-divider">
+              <div className="relative aspect-[3/4] w-full max-w-xs mx-auto overflow-hidden rounded-sm bg-divider/80">
+                <div
+                  aria-hidden="true"
+                  className={`absolute inset-0 animate-pulse bg-divider/80 transition-opacity duration-300 ${
+                    activeTestimonialLoaded ? "opacity-0" : "opacity-100"
+                  }`}
+                />
                 {testimonials.map((testimonial, idx) => (
                   <Image
                     key={testimonial.id ?? testimonial.image}
@@ -87,6 +107,7 @@ export default function HomepageClient({
                     }`}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     priority={idx === 0}
+                    onLoad={() => markTestimonialLoaded(testimonial.image)}
                   />
                 ))}
               </div>

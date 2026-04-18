@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useT } from "@/lib/useIsHydrated";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import { footerLinks } from "@/data/navigation";
 import { subscribeEmail } from "@/lib/strapi";
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const t = useT();
   const [status, setStatus] = useState<"idle" | "success" | "error" | "duplicate">("idle");
 
   const formik = useFormik({

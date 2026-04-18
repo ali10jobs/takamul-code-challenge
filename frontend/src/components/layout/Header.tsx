@@ -4,8 +4,8 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useT } from "@/lib/useIsHydrated";
 import { toggleLocale, setSearchOpen } from "@/store/uiSlice";
 import { setQuery } from "@/store/searchSlice";
 import { navLinks } from "@/data/navigation";
@@ -15,7 +15,7 @@ import Input from "@/components/atoms/Input";
 import DropdownMenu from "@/components/layout/DropdownMenu";
 
 export default function Header() {
-  const { t } = useTranslation();
+  const t = useT();
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { locale, isSearchOpen } = useAppSelector((s) => s.ui);
