@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/store/hooks";
 import { services } from "@/data/services";
-import Button from "@/components/atoms/Button";
 
 interface DropdownMenuProps {
   onMouseEnter: () => void;
@@ -12,7 +10,6 @@ interface DropdownMenuProps {
 }
 
 export default function DropdownMenu({ onMouseEnter, onMouseLeave }: DropdownMenuProps) {
-  const { t } = useTranslation();
   const locale = useAppSelector((s) => s.ui.locale);
 
   return (
@@ -34,9 +31,6 @@ export default function DropdownMenu({ onMouseEnter, onMouseLeave }: DropdownMen
           ))}
         </div>
         <div className="mt-8">
-          <Button variant="outline" href="/services/legal-consultation-services">
-            {t("nav.readMore")}
-          </Button>
         </div>
       </div>
     </div>
